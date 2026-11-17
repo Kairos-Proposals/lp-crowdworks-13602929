@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos ご提案 | Vlog・ライフスタイル系LP制作</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F3EC;
+    --bg-alt:#EFE9DD;
+    --ink:#2B2A28;
+    --ink-soft:#6b655c;
+    --sage:#7C9885;
+    --mustard:#E3A857;
+    --sky:#8FB3C2;
+    --line:#D9D2C4;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Noto Sans JP','Zen Kaku Gothic New',sans-serif;
+    font-weight:400;
+    line-height:1.9;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-weight:900;
+    letter-spacing:.02em;
+  }
+  .eyebrow{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-size:.78rem;
+    color:var(--ink-soft);
+  }
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* ===== top bar ===== */
+  .topbar{
+    position:relative;
+    z-index:5;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 28px;
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.1rem;
+    letter-spacing:.06em;
+  }
+  .brand span{color:var(--sage);}
+  .topbar .tag{
+    font-size:.72rem;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+    padding:6px 14px;
+    border-radius:30px;
+    background:var(--white);
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:30px 0 0;
+    overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:
+      radial-gradient(circle at 85% 10%, rgba(227,168,87,.35), transparent 45%),
+      radial-gradient(circle at 10% 30%, rgba(143,179,194,.35), transparent 40%),
+      radial-gradient(circle at 60% 90%, rgba(124,152,133,.25), transparent 45%);
+    filter:blur(10px);
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:48px;
+    padding:48px 0 70px;
+    flex-wrap:wrap;
+  }
+  .hero-text{flex:1 1 440px;}
+  .hero-text .eyebrow{margin-bottom:18px;display:inline-block;}
+  .hero-text h1{
+    font-size:clamp(2.1rem,4.4vw,3.1rem);
+    line-height:1.5;
+    margin-bottom:24px;
+  }
+  .hero-text h1 em{
+    font-style:normal;
+    background:linear-gradient(transparent 62%, var(--mustard) 62%);
+  }
+  .hero-text p{
+    color:var(--ink-soft);
+    font-size:1rem;
+    max-width:480px;
+    margin-bottom:28px;
+  }
+  .hero-chips{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .chip{
+    font-size:.78rem;
+    padding:7px 16px;
+    border-radius:30px;
+    background:var(--white);
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+
+  /* polaroid stack */
+  .hero-gallery{
+    flex:1 1 300px;
+    position:relative;
+    height:340px;
+    min-width:280px;
+  }
+  .polaroid{
+    position:absolute;
+    width:150px;
+    background:var(--white);
+    padding:10px 10px 28px;
+    border-radius:4px;
+    box-shadow:0 18px 40px rgba(43,42,40,.18);
+  }
+  .polaroid .shot{
+    width:100%;
+    height:120px;
+    border-radius:2px;
+  }
+  .polaroid .cap{
+    font-family:'Caveat',cursive;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    padding-top:8px;
+    display:block;
+    text-align:center;
+  }
+  .p1{top:0;left:10%;transform:rotate(-9deg);background:var(--white);z-index:2;}
+  .p1 .shot{background:linear-gradient(135deg,#8FB3C2,#cfe3e9);}
+  .p2{top:40px;left:46%;transform:rotate(7deg);z-index:3;}
+  .p2 .shot{background:linear-gradient(135deg,#E3A857,#f6dcac);}
+  .p3{top:170px;left:4%;transform:rotate(5deg);z-index:1;}
+  .p3 .shot{background:linear-gradient(135deg,#7C9885,#c9dac9);}
+
+  .filmstrip{
+    position:relative;
+    z-index:2;
+    height:30px;
+    background:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 14px;
+  }
+  .filmstrip span{
+    width:12px;height:12px;border-radius:2px;background:var(--bg);opacity:.85;
+  }
+
+  /* ===== SECTION GENERIC ===== */
+  section{
+    padding:90px 0;
+    position:relative;
+  }
+  .section-head{
+    max-width:680px;
+    margin-bottom:54px;
+  }
+  .section-head .eyebrow{display:block;margin-bottom:14px;}
+  .section-head h2{
+    font-size:clamp(1.6rem,3vw,2.2rem);
+    line-height:1.5;
+  }
+
+  /* ===== UNDERSTANDING ===== */
+  .understanding{background:var(--bg-alt);}
+  .insight-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:40px;
+    align-items:start;
+  }
+  .insight-text p{
+    margin-bottom:20px;
+    color:var(--ink-soft);
+  }
+  .insight-text strong{
+    color:var(--ink);
+    font-weight:700;
+    background:linear-gradient(transparent 70%, rgba(227,168,87,.5) 70%);
+  }
+  .quote-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:34px 30px;
+    position:relative;
+  }
+  .quote-card::before{
+    content:"“";
+    font-family:'Fraunces',serif;
+    position:absolute;
+    top:-6px;left:22px;
+    font-size:3.6rem;
+    color:var(--mustard);
+  }
+  .quote-card p{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.08rem;
+    color:var(--ink);
+    line-height:1.85;
+  }
+  .quote-card .who{
+    margin-top:18px;
+    font-family:'Noto Sans JP',sans-serif;
+    font-style:normal;
+    font-size:.82rem;
+    color:var(--ink-soft);
+  }
+
+  /* ===== VALUES ===== */
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  .value-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:30px 24px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .value-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(43,42,40,.1);
+  }
+  .v-icon{
+    width:46px;height:46px;
+    border-radius:50%;
+    margin-bottom:18px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .v-icon.i1{background:rgba(124,152,133,.18);}
+  .v-icon.i2{background:rgba(227,168,87,.2);}
+  .v-icon.i3{background:rgba(143,179,194,.22);}
+  .v-icon.i4{background:rgba(124,152,133,.18);}
+  .v-icon span{
+    display:block;
+  }
+  .play{
+    width:0;height:0;
+    border-top:7px solid transparent;
+    border-bottom:7px solid transparent;
+    border-left:12px solid var(--sage);
+    margin-left:3px;
+  }
+  .leaf{
+    width:16px;height:16px;border-radius:0 60% 0 60%;
+    background:var(--sage);
+  }
+  .dot-ring{
+    width:18px;height:18px;border-radius:50%;
+    border:3px solid var(--mustard);
+  }
+  .grid3{
+    width:16px;height:16px;
+    background:
+      linear-gradient(var(--sky),var(--sky)) 0 0/7px 7px no-repeat,
+      linear-gradient(var(--sky),var(--sky)) 9px 0/7px 7px no-repeat,
+      linear-gradient(var(--sky),var(--sky)) 0 9px/7px 7px no-repeat,
+      linear-gradient(var(--sky),var(--sky)) 9px 9px/7px 7px no-repeat;
+  }
+  .value-card h3{
+    font-size:1.05rem;
+    margin-bottom:10px;
+  }
+  .value-card p{
+    font-size:.9rem;
+    color:var(--ink-soft);
+  }
+
+  /* ===== PROCESS ===== */
+  .process{background:var(--bg-alt);}
+  .timeline{
+    position:relative;
+    padding-left:26px;
+    border-left:2px dashed var(--line);
+  }
+  .step{
+    position:relative;
+    padding-bottom:46px;
+  }
+  .step:last-child{padding-bottom:0;}
+  .step::before{
+    content:"";
+    position:absolute;
+    left:-33px;top:2px;
+    width:16px;height:16px;
+    border-radius:50%;
+    background:var(--mustard);
+    border:4px solid var(--bg-alt);
+    box-shadow:0 0 0 2px var(--mustard);
+  }
+  .step .num{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:.82rem;
+    letter-spacing:.08em;
+  }
+  .step h3{
+    font-size:1.1rem;
+    margin:6px 0 8px;
+  }
+  .step p{
+    color:var(--ink-soft);
+    font-size:.92rem;
+    max-width:560px;
+  }
+
+  /* ===== CLOSING ===== */
+  .closing{
+    background:var(--ink);
+    color:var(--bg);
+    text-align:center;
+    overflow:hidden;
+    position:relative;
+  }
+  .closing .glow{
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 0%, rgba(227,168,87,.25), transparent 55%);
+  }
+  .closing-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;}
+  .closing .eyebrow{color:var(--mustard);}
+  .closing h2{
+    color:var(--bg);
+    font-size:clamp(1.6rem,3.6vw,2.3rem);
+    margin:16px 0 20px;
+    line-height:1.6;
+  }
+  .closing p{
+    color:#cfc9bd;
+    margin-bottom:34px;
+    font-size:.98rem;
+  }
+  .cta-btn{
+    display:inline-block;
+    background:var(--mustard);
+    color:var(--ink);
+    padding:16px 42px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:1rem;
+    letter-spacing:.04em;
+    transition:transform .2s ease, box-shadow .2s ease;
+    box-shadow:0 10px 30px rgba(227,168,87,.35);
+  }
+  .cta-btn:hover{
+    transform:translateY(-3px);
+  }
+  .closing-note{
+    margin-top:26px;
+    font-size:.8rem;
+    color:#9a9488;
+  }
+
+  footer{
+    text-align:center;
+    padding:30px 20px;
+    font-size:.78rem;
+    color:var(--ink-soft);
+    background:var(--bg);
+  }
+
+  @media (max-width:860px){
+    .insight-grid{grid-template-columns:1fr;}
+    .value-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:600px){
+    .hero-inner{padding:30px 0 50px;}
+    .hero-gallery{height:260px;}
+    .polaroid{width:120px;}
+    .polaroid .shot{height:95px;}
+    .value-grid{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Kairos<span>.</span></div>
+  <div class="tag">Proposal for TMGC_</div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow">Lifestyle / Vlog LP Proposal</span>
+      <h1>日常の光を、<br>はじめましての人にも<br><em>伝わる一枚</em>に。</h1>
+      <p>Vlog・ライフスタイル発信を続けてこられたTMGC_さんの「人柄」と「世界観」を、企業担当者が一目で安心できるページに変換するご提案です。Web制作・システム開発チーム Kairosがお手伝いします。</p>
+      <div class="hero-chips">
+        <span class="chip">プロフィールLP</span>
+        <span class="chip">余白とおしゃれ</span>
+        <span class="chip">スマホ最適化</span>
+      </div>
+    </div>
+    <div class="hero-gallery">
+      <div class="polaroid p1"><div class="shot"></div><span class="cap">morning coffee</span></div>
+      <div class="polaroid p2"><div class="shot"></div><span class="cap">weekend vlog</span></div>
+      <div class="polaroid p3"><div class="shot"></div><span class="cap">quiet room</span></div>
+    </div>
+  </div>
+  <div class="filmstrip">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- UNDERSTANDING -->
+<section class="understanding">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What we understood</span>
+      <h2>募集文を拝見して、<br>感じたことがあります。</h2>
+    </div>
+    <div class="insight-grid">
+      <div class="insight-text">
+        <p>毎日の投稿で<strong>瞬間の空気感</strong>は伝えられても、はじめて出会う企業担当者に「この人になら任せられそう」という<strong>安心感</strong>を一度で届けるのは、SNSの時間軸だけでは難しいものだと思います。</p>
+        <p>今回大切にされているのは、派手な実績の見せ方ではなく、<strong>人柄や仕事への向き合い方</strong>がきちんと伝わること。だからこそLPには、プロフィールとVlog・フォトギャラリーを“余白”でつなぎ、読む人のペースで人となりを感じてもらえる構成が必要だと考えています。</p>
+        <p>私たちKairosは、肩書きや実績の大きさだけでなく、<strong>その人らしさを丁寧に汲み取るプロセス</strong>自体を大切にしたいと考えるチームです。</p>
+      </div>
+      <div class="quote-card">
+        <p>「この人なら、自社の商品やブランドの魅力を素敵に届けてくれそう」と思っていただけるページにしたい。</p>
+        <div class="who">— 募集文より</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What Kairos can offer</span>
+      <h2>Kairosがご提供できること</h2>
+    </div>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="v-icon i1"><span class="leaf"></span></div>
+        <h3>人柄を伝えるストーリー構成</h3>
+        <p>プロフィール・日常・仕事観を一本の流れとして設計し、初対面の企業担当者にも空気感が伝わる構成にします。</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon i2"><span class="play"></span></div>
+        <h3>問い合わせへの自然な導線</h3>
+        <p>PR・タイアップ・出演依頼、各SNSへの遷移を、押し付けがましくない形で自然に促すCTA設計を行います。</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon i3"><span class="grid3"></span></div>
+        <h3>余白を活かしたフォトギャラリー</h3>
+        <p>Vlog・ライフスタイルの写真を、詰め込みすぎず“間”で見せるギャラリーレイアウトを実装します。</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon i4"><span class="dot-ring"></span></div>
+        <h3>スマホでの見やすさを最優先</h3>
+        <p>ターゲットである企業担当者もスマホで閲覧する前提を踏まえ、片手操作・読みやすさを徹底検証します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How we work</span>
+      <h2>進め方とスケジュールの目安</h2>
+    </div>
+    <div class="timeline">
+      <div class="step">
+        <div class="num">Step 01 ・ 2〜3日</div>
+        <h3>ヒアリング・すり合わせ</h3>
+        <p>オンラインで、普段の活動内容・大切にしたい世界観・NGな表現などを丁寧にお伺いします。ポートフォリオや応募文のやり取りもここで確認します。</p>
+      </div>
+      <div class="step">
+        <div class="num">Step 02 ・ 1週間ほど</div>
+        <h3>構成・デザイン作成</h3>
+        <p>ファーストビュー／プロフィール／Vlog紹介／フォトギャラリーの構成案とデザインカンプを作成し、すり合わせながら調整します。</p>
+      </div>
+      <div class="step">
+        <div class="num">Step 03 ・ 1〜1.5週間</div>
+        <h3>実装・コーディング</h3>
+        <p>スマートフォン・PC双方で崩れないよう実装し、表示速度や文字の読みやすさも確認しながら進めます。</p>
+      </div>
+      <div class="step">
+        <div class="num">Step 04 ・ 2〜3日</div>
+        <h3>確認・微調整</h3>
+        <p>実際の見え方を確認いただきながら、文言や余白、配色など細部を調整します。</p>
+      </div>
+      <div class="step">
+        <div class="num">Step 05</div>
+        <h3>公開・アフターフォロー</h3>
+        <p>公開後の軽微な修正や、運用に関するご相談にも引き続き対応いたします。全体で3週間〜1ヶ月を目安にしています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="glow"></div>
+  <div class="wrap closing-inner">
+    <span class="eyebrow">Let's talk</span>
+    <h2>まずは、あなたの日常の話から<br>聞かせてください。</h2>
+    <p>実績の多さよりも、丁寧なコミュニケーションとものづくりへの姿勢を大切にしたいと考えています。ポートフォリオや応募フォーマットをご用意いただいた上で、一度オンラインでお話しできれば嬉しいです。</p>
+    <a href="#" class="cta-btn">Kairosに相談してみる</a>
+    <div class="closing-note">ご応募フォーマットのご返信、随時お待ちしております。</div>
+  </div>
+</section>
+
+<footer>
+  Kairos — Web制作・システム開発チーム ／ 本提案はTMGC_様の募集内容を拝見して作成したものです。
+</footer>
+
+</body>
+</html>
